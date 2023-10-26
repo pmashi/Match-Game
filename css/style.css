@@ -1,7 +1,18 @@
-.container { 
-    display: grid; 
+#board { 
+    display: grid;
+    grid-template-columns: 200px 200px 200px 200px;
+    grid-template-rows: 200px 200px 200px 200px;
 }
 
-@media (width = 800) { 
-    
+.cell { 
+
+}
+
+@media (width = 400) and (height = 800) { 
+  
+
+}
+@media (width > 800) { 
+  
+
 }
