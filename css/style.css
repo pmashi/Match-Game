@@ -1,11 +1,23 @@
+body{
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    /* grid-template-columns: repeat(640px,minmax(auto-fit,1fr)); */
+}
+
 #board { 
     display: grid;
-    grid-template-columns: 200px 200px 200px 200px;
-    grid-template-rows: 200px 200px 200px 200px;
+    grid-column: 2 7;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    
+    justify-content: center;
+   
 }
 
 .cell { 
-
+    
+    border-color: black;
+    border-style: solid;
+    justify-content: center;
 }
 
 @media (width = 400) and (height = 800) { 
@@ -15,4 +27,8 @@
 @media (width > 800) { 
   
 
+}
+
+aside{
+  
 }
