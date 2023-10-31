@@ -4,6 +4,9 @@ function createGrid() {
         grid[i-1] = i
         grid[i] = i; 
     }
+    for(num in grid) {
+        console.log(num);
+    }
 }
 
 function initialize() { 
@@ -14,27 +17,28 @@ function initialize() {
         for(k=0; k<4; k++) {
             let cell = document.createElement('img');
             cell.className = 'cell';
-            cell.id = i + "," + k;
+            cell.id = i * k + k;
             cell.innerHTML = i + "," + k;
-            cell.setAttribute("src", "../img/sandbucket.png");
+            cell.setAttribute("src", "img/sandbucket.png");
             cell.addEventListener('click', () => {handleClick(cell)});
             row.appendChild(cell);
         }
         board.appendChild(row);
     }
+    createGrid();
     render(); 
 }
 
 function render() { 
+    scoreElement.innerHTML = score; 
     for(let cell of document.getElementsByClassName('cell')) { 
          
     }
 }
 
+var scoreElement = document.getElementById("score");
+var score = 0; 
+
 function handleClick(cell) { 
     
-}
-
-function randomize() { 
-
 }
