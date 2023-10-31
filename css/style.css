@@ -1,37 +1,46 @@
 body{
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
-    /* grid-template-columns: repeat(640px,minmax(auto-fit,1fr)); */
+    border-color: black;
+    border-style: solid;
+    column-gap: 10px;
+    background-image: url('../img/beach_Background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+header{
+    text-align: center;
 }
 
-#board { 
+#board {
     display: grid;
     grid-column: 2 7;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-
-    justify-content: center;
-   
+    gap: 20px;
 }
 
-.cell { 
-    
+
+.cell {
+   
     border-color: black;
     border-style: solid;
     justify-content: center;
+    width: 100px;
 
-    width: 500px;
-    /* height: 200; */
+
+    grid-row: span 4;
+}
+.top{
+    grid-column: span 3;
+    text-align: center;
+   
 }
 
-@media (width = 400) and (height = 800) { 
-  
 
+@media (width = 400) and (height = 800) {
 }
+
 @media (width > 800) { 
   
 
-}
-
-aside{
-  
 }
