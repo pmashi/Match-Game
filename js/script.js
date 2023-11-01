@@ -1,8 +1,6 @@
 const img = ["2x Shovel.png", "Normal Card.png", "2x Shovel.png", "Normal Card.png", "2x Shovel.png", "Normal Card.png", "2x Shovel.png", "Normal Card.png" ];
 var grid;
 var gridVis; 
-var checkOne = false; 
-var checkTwo = false; 
 
 function createGrid() { 
     grid = new Array(16);
@@ -59,11 +57,25 @@ function render() {
 
 var scoreElement = document.getElementById("score");
 var score = 0; 
-
+var checkOne = false; 
+var checkTwo = false; 
+var checkIds = [-1, -1];
 function handleClick(cell) { 
     score++;
     id = cell.id;
     if(gridVis[id] == true) return; 
-    cell.setAttribute("src", "img/"+img[grid[id]]);
-
+    if(!checkOne) {
+        cell.setAttribute("src", "img/"+img[grid[id]]);
+        checkOne = true; 
+    } else if(!checkTwo) { 
+        cell.setAttribute("src", "img/"+img[grid[id]]);
+        checkTwo = true; 
+    }
+    if(checkOne && checkTwo) { 
+        setTimeout(1000); 
+        check(); 
+    }
+}
+function check() { 
+    
 }
