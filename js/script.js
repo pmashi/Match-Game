@@ -23,7 +23,7 @@ function gridLog() { // debugging function
 }
 
 function initialize() { 
-    // grid = new Array(16);
+    createGrid();
     let board = document.getElementById('board');
     for(i=0; i<4; i++) { 
         let row = document.createElement('div');
@@ -31,14 +31,13 @@ function initialize() {
         for(k=0; k<4; k++) {
             let cell = document.createElement('img');
             cell.className = 'cell';
-            cell.id = i * k + k;
+            cell.id = i*grid.length + k;
             cell.setAttribute("src", "img/sandbucket.png");
             cell.addEventListener('click', () => {handleClick(cell)});
             row.appendChild(cell);
         }
         board.appendChild(row);
     }
-    createGrid();
     render(); 
 }
 
