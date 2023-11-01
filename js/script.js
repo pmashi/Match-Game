@@ -1,10 +1,15 @@
-const img = {}
+const img = ["2x Shovel.png", "Normal Card.png", "2x Shovel.png", "Normal Card.png", "2x Shovel.png", "Normal Card.png", "2x Shovel.png", "Normal Card.png" ];
 var grid;
+var gridVis; 
+var checkOne = false; 
+var checkTwo = false; 
 
 function createGrid() { 
     grid = new Array(16);
+    gridVis = new Array(16)
     for(let i = 0; i < grid.length; i++) { 
         grid[i] = i%8;
+        gridVis = false; 
     }
     gridLog();
 
@@ -31,7 +36,7 @@ function initialize() {
         for(k=0; k<4; k++) {
             let cell = document.createElement('img');
             cell.className = 'cell';
-            cell.id = i*grid.length + k;
+            cell.id = i*parseInt(Math.sqrt(grid.length)) + k;
             cell.setAttribute("src", "img/sandbucket.png");
             cell.addEventListener('click', () => {handleClick(cell)});
             row.appendChild(cell);
@@ -44,7 +49,11 @@ function initialize() {
 function render() { 
     scoreElement.innerHTML = score; 
     for(let cell of document.getElementsByClassName('cell')) { 
-         
+        id = cell.id;
+        console.log("id: " + id);
+        if(gridVis[id] == false) { 
+            cell.setAttribute("src", "img/sandbucket.png");
+        }
     }
 }
 
@@ -53,4 +62,8 @@ var score = 0;
 
 function handleClick(cell) { 
     score++;
+    id = cell.id;
+    if(gridVis[id] == true) return; 
+    cell.setAttribute("src", "img/"+img[grid[id]]);
+
 }
