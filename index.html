@@ -8,35 +8,31 @@
    
 </head>
 <body onload="initialize()">
-    <header>
-        <h1>Sand Searcher</h1>   
+    <header class = "top">
+        <h1>Sand Searcher</h1>  
     </header>
     <aside class = "left">
-        <p class = "score"> Score:</p>
-        <button class = "reset">RESET</button>
+        <p id="score"> Score:</p>
+        <button id="reset">RESET</button>
     </aside>
-    
+    <p class = "howToPlay">
+        Welcome to Sand Searcher! a game where you arrive on
+        the sandy shores of a strange land. In a desparate need for money,
+        you take up the task of searching the sands for lost treasure or missing items.
+        <br>
+        To be a successful in this job you must flip over piles of sand(cards) and
+        uncover two cards with the same item to claim that item.
+        <br>
+        If you can find all the hidden items in under 16 flips you will be consider a winner
+        and receive a special title.
+        If you don't, just keep trying you'll become a master searcher in no time!.
+        <br>
+        Tips:
+        The number of flips you have completed will be recorded on the left side of the screen.
+        The reset button will change your location to a different beach in the country.
+   
+    </p>
     <div id="board"></div>
-
-    <div>
-        <!-- <img src="img/sandbucket.png"> -->
-    </div>
-    <footer>
-        <p class = "howToPlay"> 
-            Welcome to Sand Searcher! a game where you arrive on 
-            the sandy shores of a strange land. In a desparate need for money, 
-            you take up the task of searching the sands for lost treasure or missing items.
-            To be a successful in this job you must flip over piles of sand(cards) and 
-            uncover two cards with the same item to claim that item.
-            If you can find all the hidden items in under 16 flips you will be consider a winner 
-            and receive a special title.
-            If you don't, just keep trying you'll become a master searcher in no time!.
-            Tips:
-            The number of flips you have completed will be recorded on the left side of the screen.
-            The reset button will change your location to a different beach in the country.
-        
-        </p>
-    </footer>
     <script src="js/script.js" async></script>
 </body>
 </html>
