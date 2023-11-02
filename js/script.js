@@ -1,12 +1,32 @@
+const img = ["2x Shovel.png", "Normal Card.png", "2x Shovel.png", "Normal Card.png", "2x Shovel.png", "Normal Card.png", "2x Shovel.png", "Normal Card.png" ];
+var grid;
+var gridVis; 
+
 function createGrid() { 
-    let grid = new Array(16);
-    for(let i = 1; i < grid.length; i+=2) { 
-        grid[i-1] = i
-        grid[i] = i; 
+    grid = new Array(16);
+    gridVis = new Array(16)
+    for(let i = 0; i < grid.length; i++) { 
+        grid[i] = i%8;
+        gridVis = false; 
+    }
+    gridLog();
+
+    for(let i = 0; i < grid.length; i++) { 
+        const j = Math.floor(Math.random() * (grid.length - i) + i);
+        [grid[i], grid[j]] = [grid[j], grid[i]];
+    }
+    console.log("round 2")
+    gridLog();
+}
+
+function gridLog() { // debugging function
+    for(let i = 0; i < grid.length; i++) { 
+        console.log(grid[i]);
     }
 }
 
 function initialize() { 
+    createGrid();
     let board = document.getElementById('board');
     for(i=0; i<4; i++) { 
         let row = document.createElement('div');
@@ -14,9 +34,8 @@ function initialize() {
         for(k=0; k<4; k++) {
             let cell = document.createElement('img');
             cell.className = 'cell';
-            cell.id = i + "," + k;
-            cell.innerHTML = i + "," + k;
-            cell.setAttribute("src", "../img/sandbucket.png");
+            cell.id = i*parseInt(Math.sqrt(grid.length)) + k;
+            cell.setAttribute("src", "img/sandbucket.png");
             cell.addEventListener('click', () => {handleClick(cell)});
             row.appendChild(cell);
         }
@@ -26,15 +45,37 @@ function initialize() {
 }
 
 function render() { 
+    scoreElement.innerHTML = score; 
     for(let cell of document.getElementsByClassName('cell')) { 
-         
+        id = cell.id;
+        console.log("id: " + id);
+        if(gridVis[id] == false) { 
+            cell.setAttribute("src", "img/sandbucket.png");
+        }
     }
 }
 
+var scoreElement = document.getElementById("score");
+var score = 0; 
+var checkOne = false; 
+var checkTwo = false; 
+var checkIds = [-1, -1];
 function handleClick(cell) { 
-    
+    score++;
+    id = cell.id;
+    if(gridVis[id] == true) return; 
+    if(!checkOne) {
+        cell.setAttribute("src", "img/"+img[grid[id]]);
+        checkOne = true; 
+    } else if(!checkTwo) { 
+        cell.setAttribute("src", "img/"+img[grid[id]]);
+        checkTwo = true; 
+    }
+    if(checkOne && checkTwo) { 
+        setTimeout(1000); 
+        check(); 
+    }
 }
-
-function randomize() { 
-
+function check() { 
+    
 }
