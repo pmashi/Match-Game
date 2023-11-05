@@ -1,6 +1,5 @@
 const img = ["2x Shovel.png", "Normal Card.png", "2x Shovel.png", "Normal Card.png", "2x Shovel.png", "Normal Card.png", "2x Shovel.png", "Normal Card.png" ];
-var grid;
-var gridVis; 
+var grid; 
 
 function createGrid() { 
     grid = new Array(16);
@@ -41,41 +40,52 @@ function initialize() {
         }
         board.appendChild(row);
     }
-    render(); 
+    // render(); 
 }
 
 function render() { 
-    scoreElement.innerHTML = score; 
-    for(let cell of document.getElementsByClassName('cell')) { 
-        id = cell.id;
-        console.log("id: " + id);
-        if(gridVis[id] == false) { 
-            cell.setAttribute("src", "img/sandbucket.png");
-        }
-    }
+    scoreElement.innerHTML = "Score: " + score; 
 }
 
 var scoreElement = document.getElementById("score");
 var score = 0; 
-var checkOne = false; 
-var checkTwo = false; 
-var checkIds = [-1, -1];
+var checkOne = -1; 
+var checkTwo = -1; 
+
 function handleClick(cell) { 
-    score++;
+    console.log("click!")
     id = cell.id;
     if(gridVis[id] == true) return; 
-    if(!checkOne) {
+    if(checkOne == -1) {
         cell.setAttribute("src", "img/"+img[grid[id]]);
-        checkOne = true; 
-    } else if(!checkTwo) { 
+        checkOne = id;
+        score++; 
+    } else if(checkTwo == -1) { 
         cell.setAttribute("src", "img/"+img[grid[id]]);
-        checkTwo = true; 
+        if(checkOne != id)  {
+            checkTwo = id; 
+            score++;
+        }
     }
-    if(checkOne && checkTwo) { 
-        setTimeout(1000); 
+    render();
+    if(checkOne != -1 && checkTwo != -1) { 
+        console.log("about to check")
+        console.log("checkOne: " + checkOne + " " + grid[checkOne]);
+        console.log("checkTwo: " + checkTwo + " " + grid[checkTwo]); 
         check(); 
     }
 }
+
+
 function check() { 
-    
+    if(grid[checkOne] == grid[checkTwo]) {
+        checkOne = -1, checkTwo =-1;     
+        return;
+    }
+    else { 
+        document.getElementById(checkOne).setAttribute("src", "img/sandbucket.png");        
+        document.getElementById(checkTwo).setAttribute("src", "img/sandbucket.png");
+    }
+    checkOne = -1;
+    checkTwo = -1; 
 }
