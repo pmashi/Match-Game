@@ -14,16 +14,22 @@ function createGrid() {
         const j = Math.floor(Math.random() * (grid.length - i) + i);
         [grid[i], grid[j]] = [grid[j], grid[i]];
     }
-    console.log("round 2")
     gridLog();
 }
-
 function gridLog() { // debugging function
     for(let i = 0; i < grid.length; i++) { 
         console.log(grid[i]);
     }
 }
-
+document.getElementById("reset").addEventListener("click", () => reset());
+function reset() { 
+    createGrid(); 
+    for(let i = 0; i < grid.length; i++) { 
+        document.getElementById(i).setAttribute("src", "img/sandbucket.png");
+    }
+    score = 0; 
+    render(); 
+}
 function initialize() { 
     createGrid();
     let board = document.getElementById('board');
@@ -40,7 +46,8 @@ function initialize() {
         }
         board.appendChild(row);
     }
-    // render(); 
+    score = 0; 
+    render(); 
 }
 
 function render() { 
@@ -55,6 +62,7 @@ var checkTwo = -1;
 function handleClick(cell) { 
     console.log("click!")
     id = cell.id;
+    if(checkOne != -1 && checkTwo != -1) return; 
     if(gridVis[id] == true) return; 
     if(checkOne == -1) {
         cell.setAttribute("src", "img/"+img[grid[id]]);
@@ -75,17 +83,19 @@ function handleClick(cell) {
         check(); 
     }
 }
-
-
 function check() { 
     if(grid[checkOne] == grid[checkTwo]) {
         checkOne = -1, checkTwo =-1;     
         return;
+    } else { 
+        setTimeout(() => { 
+            document.getElementById(checkOne).setAttribute("src", "img/sandbucket.png");
+            document.getElementById(checkTwo).setAttribute("src", "img/sandbucket.png");
+            checkOne = -1;
+            checkTwo = -1; 
+        }, 1000); 
     }
-    else { 
-        document.getElementById(checkOne).setAttribute("src", "img/sandbucket.png");        
-        document.getElementById(checkTwo).setAttribute("src", "img/sandbucket.png");
-    }
-    checkOne = -1;
-    checkTwo = -1; 
+}
+function resetTiles() { 
+    console.log(checkOne + " " + checkTwo); 
 }
