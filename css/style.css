@@ -2,11 +2,7 @@ body{
     background-color: rgba(216, 209, 165, 0.854);
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
-    grid-template-rows: 150px 275px 250px;
-    /*
-    border-color: black;
-    border-style: solid;
-    */
+    grid-template-rows: 150px 275px 250px auto;
     column-gap: 10px;
     background-image: url('../img/beach_Background.png');
     background-repeat: no-repeat;
@@ -22,10 +18,10 @@ body{
     grid-row: span 2;
     gap: 5px;
     justify-content: center;
-    border-color: black;
-    border-style: solid;
 }
+
 .cell {
+    border-radius: 5px;
     border-color: black;
     border-style: solid;
     justify-content: center;
@@ -36,6 +32,11 @@ body{
     grid-column: span 3;
     text-align: center;
     font-size: x-large;
+    background-color: rgba(82,135,195,0.5);
+    color: white;
+    border: 5px solid white;
+    border-radius: 5px;
+    
 }
 .left{
     grid-column-start: 1;
@@ -63,9 +64,63 @@ body{
     text-align: left;
     font-size: x-large;
 }
-@media (min-width: 600) {
-
+#reset{
+    width: 125px;
+    height: 40px;
+    font-size: larger;
+    border-radius: 5px;
+    border: 2px solid gray;
 }
-@media (width > 800) {
 
+
+@media (max-width: 500px) and (min-width: 200px){
+  #board{
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }  
+ .howToPlay{
+    grid-row-start: 3;
+    grid-row-end: 4;
+    height:700px;
+ }
+ .top{
+    grid-row: 8;
+    writing-mode: vertical-rl;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    background-color: rgba(82,135,195,0.5);
+    color: white;
+    border: 5px solid white;
+    border-radius: 5px;
+ }
 }
+
+@media (max-width: 1200px) and (min-width: 500px){
+  #board{
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }  
+ .howToPlay{
+    grid-row-start: 3;
+    grid-row-end: 4;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    height: 400px;
+ }
+ aside{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+ }
+ .top{
+    grid-row-start: 8;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    background-color: rgba(82,135,195,0.5);
+    color: white;
+    border: 5px solid white;
+    border-radius: 5px;
+ }
+}
+
