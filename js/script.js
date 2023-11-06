@@ -1,4 +1,4 @@
-const img = ["2x Shovel.png", "Normal Card.png", "Stick_Item_Card.png", "Gold_Item_Card.png", "2x Shovel.png", "Normal Card.png", "Stick_Item_Card.png", "Gold_Item_Card.png"];
+const img = ["Stick_Item_Card.png", "Pebbles_Item_Card.png", "Key_Item_Card.png", "Broken_Phone_Item_Card.png", "Old_Watch_Item_Card.png", "Old_Necklace_Item_Card.png", "Ring_Item_Card.png", "Gold_Item_Card.png"];
 document.getElementById("reset").addEventListener("click", () => reset());
 var score = 0; 
 var checkOne = -1; 
@@ -27,7 +27,7 @@ function gridLog() { // debugging function
 function reset() { 
     createGrid(); 
     for(let i = 0; i < grid.length; i++) { 
-        document.getElementById(i).setAttribute("src", "img/sandbucket.png");
+        document.getElementById(i).setAttribute("src", "img/Normal_Card.png");
     }
     score = 0; 
     render(); 
@@ -42,7 +42,7 @@ function initialize() {
             let cell = document.createElement('img');
             cell.className = 'cell';
             cell.id = i*parseInt(Math.sqrt(grid.length)) + k;
-            cell.setAttribute("src", "img/sandbucket.png");
+            cell.setAttribute("src", "img/Normal_Card.png");
             cell.addEventListener('click', () => {handleClick(cell)});
             row.appendChild(cell);
         }
@@ -85,8 +85,8 @@ function check() {
         return;
     } else { 
         setTimeout(() => { 
-            document.getElementById(checkOne).setAttribute("src", "img/sandbucket.png");
-            document.getElementById(checkTwo).setAttribute("src", "img/sandbucket.png");
+            document.getElementById(checkOne).setAttribute("src", "img/Normal_Card.png");
+            document.getElementById(checkTwo).setAttribute("src", "img/Normal_Card.png");
             (gridVis[checkOne] = false, gridVis[checkTwo] = false); 
             (checkOne = -1, checkTwo = -1);
              
