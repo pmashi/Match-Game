@@ -93,3 +93,10 @@ function check() {
         }, 1000); 
     }
 }
+function checkWin() { 
+    if(score == 2) return score; 
+    for(vis in gridVis) { 
+        if(!vis) return;  
+    }
+    return score; 
+}

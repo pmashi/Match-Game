@@ -51,7 +51,7 @@ body{
     background-color: rgba(82,135,195,0.5);
     font-size: large;
     color: white;
-    text-align: left;
+    text-align: center;
 }
 #score{
     width: 125px;
