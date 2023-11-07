@@ -11,8 +11,6 @@ function createGrid() {
         grid[i] = i%8;
         gridVis[i] = false; 
     }
-    gridLog();
-
     for(let i = 0; i < grid.length; i++) { 
         const j = Math.floor(Math.random() * (grid.length - i) + i);
         [grid[i], grid[j]] = [grid[j], grid[i]];
@@ -54,7 +52,6 @@ function initialize() {
 function render() { 
     document.getElementById("score").innerHTML = "Score: " + score; 
 }
-
 function handleClick(cell) { 
     id = cell.id;
     // if(checkOne != -1 && checkTwo != -1) return; 
