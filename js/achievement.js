@@ -34,8 +34,7 @@ function checkForAchievements(){
  }
  function displayAchievements(){
     if(activeAchievement[0]){
-      document.getElementById("achievement0").style.display = "block";
-      
+      document.getElementById("achievement0").style.display = "block"; 
     }
     if(activeAchievement[1]){
       document.getElementById("achievement1").style.display = "block";

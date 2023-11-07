@@ -119,34 +119,61 @@ h3{
 }
 #win {  
     grid-row: 5;
-    grid-column-start: 2;
-    grid-column-end: 3;  
+    grid-column-start: 1;
+    grid-column-end: 4;   
     text-align: center; 
     color: rgb(17, 17, 161);
     font-size: 70px;
     justify-content: center;
     display: none; 
-}
-@media (max-width: 500px) and (min-width: 200px){
-  #board{
-    grid-row-start: 1;
-    grid-row-end: 2;
-  }  
- .howToPlay{
-    grid-row-start: 3;
-    grid-row-end: 4;
-    height:700px;
- }
- .top{
-    grid-row: 8;
-    writing-mode: vertical-rl;
-    grid-column-start: 1;
-    grid-column-end: 2;
-    background-color: rgba(82,135,195,0.5);
-    color: white;
+    background-color: rgba(6, 139, 255,0.25);
     border: 5px solid white;
     border-radius: 5px;
- }
+}
+@media (max-width: 500px) and (min-width: 200px){
+    #board{
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }  
+    .howToPlay{
+        grid-row-start: 3;
+        grid-row-end: 4;
+        height:500px;
+    }
+    .top{
+        grid-row-start: 8;
+        grid-row-end: 10;
+        writing-mode: vertical-rl;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        background-color: rgba(82,135,195,0.5);
+        color: white;
+        border: 5px solid white;
+        border-radius: 5px;
+    }
+    #achievements{
+        display: flex;
+        grid-row-start: 12;
+        grid-row-end: 13;
+        grid-column-start: 2;
+        grid-column-end:4;
+        flex-wrap: wrap;
+        width: 500px;
+        height: 200px;
+    }
+    #win {  
+        grid-row: 5;
+        grid-column-start: 1;
+        grid-column-end: 4;   
+        text-align: center; 
+        color: rgb(17, 17, 161);
+        font-size: 70px;
+        justify-content: center;
+        display: none; 
+        background-color: rgba(6, 139, 255,0.25);
+        border: 5px solid white;
+        border-radius: 5px;
+    }
 }
 @media (max-width: 1200px) and (min-width: 500px){
     #board{
@@ -168,6 +195,7 @@ h3{
     }
     .top{
         grid-row-start: 8;
+        grid-row-end: 10;
         grid-column-start: 1;
         grid-column-end: 2;
         background-color: rgba(82,135,195,0.5);
@@ -175,13 +203,28 @@ h3{
         border: 5px solid white;
         border-radius: 5px;
     }
- #achievements{
-    display: flex;
-    grid-row-start: 4;
-    grid-row-end: 5;
-    grid-column-start: 2;
-    grid-column-end:4;
-    flex-wrap: wrap;
- }
+    #achievements{
+        display: flex;
+        grid-row-start: 10;
+        grid-row-end: 12;
+        grid-column-start: 2;
+        grid-column-end:4;
+        flex-wrap: wrap;
+        width: 500px;
+        height: 300px;
+    }
+    #win {  
+        grid-row: 5;
+        grid-column-start: 1;
+        grid-column-end: 4;  
+        text-align: center; 
+        color: rgb(17, 17, 161);
+        font-size: 70px;
+        justify-content: center;
+        display: none; 
+        background-color: rgba(6, 139, 255,0.25);
+        border: 5px solid white;
+        border-radius: 5px;
+    }
 }
 
