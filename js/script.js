@@ -3,7 +3,7 @@ document.getElementById("reset").addEventListener("click", () => reset());
 var score = 0; 
 var checkOne = -1; 
 var checkTwo = -1; 
-
+var win = false; 
 function createGrid() { 
     grid = new Array(16);
     gridVis = new Array(16)
@@ -15,7 +15,7 @@ function createGrid() {
         const j = Math.floor(Math.random() * (grid.length - i) + i);
         [grid[i], grid[j]] = [grid[j], grid[i]];
     }
-    gridLog();
+    // gridLog();
 }
 function gridLog() { // debugging function
     for(let i = 0; i < grid.length; i++) { 
@@ -28,6 +28,7 @@ function reset() {
         document.getElementById(i).setAttribute("src", "img/Normal_Card.png");
     }
     score = 0; 
+    win = false; 
     render(); 
 }
 function initialize() { 
@@ -51,10 +52,11 @@ function initialize() {
 }
 function render() { 
     document.getElementById("score").innerHTML = "Score: " + score; 
+    winDisplay = win ? "block" : "none"; 
+    document.getElementById("win").style.display = winDisplay; 
 }
 function handleClick(cell) { 
     id = cell.id;
-    // if(checkOne != -1 && checkTwo != -1) return; 
     if(gridVis[id] == true || (checkOne != -1 && checkTwo != -1)) return; 
     console.log("click!" + grid[id] + " " + gridVis[id])
     console.log("pass")
@@ -78,7 +80,8 @@ function handleClick(cell) {
 }
 function check() { 
     if(grid[checkOne] == grid[checkTwo]) {
-        checkOne = -1, checkTwo =-1;     
+        checkOne = -1, checkTwo =-1; 
+        checkWin(); 
         return;
     } else { 
         setTimeout(() => { 
@@ -86,14 +89,15 @@ function check() {
             document.getElementById(checkTwo).setAttribute("src", "img/Normal_Card.png");
             (gridVis[checkOne] = false, gridVis[checkTwo] = false); 
             (checkOne = -1, checkTwo = -1);
-             
         }, 1000); 
     }
 }
 function checkWin() { 
     if(score == 2) return score; 
-    for(vis in gridVis) { 
-        if(!vis) return;  
+    for(vis of gridVis) { 
+        if(!vis) return;
     }
+    win = true; 
+    render(); 
     return score; 
 }
