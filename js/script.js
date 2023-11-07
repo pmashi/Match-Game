@@ -53,6 +53,8 @@ function initialize() {
 }
 function render() { 
     document.getElementById("score").innerHTML = "Score: " + score; 
+    displayAchievements();
+    
 }
 
 function handleClick(cell) { 
@@ -71,7 +73,15 @@ function handleClick(cell) {
         if(checkOne != id) { 
             checkTwo = id; 
             gridVis[id] = true;
-            score++;
+            //Solid Gold Achievement
+            if(activeAchievement[1])
+            {
+                score += 0.5;
+            }
+            else {
+                score++;
+            }
+            
         }
     }
     render();
@@ -81,7 +91,9 @@ function handleClick(cell) {
 }
 function check() { 
     if(grid[checkOne] == grid[checkTwo]) {
-        checkOne = -1, checkTwo =-1;     
+        checkForAchievements();    
+        checkOne = -1, checkTwo =-1;
+         
         return;
     } else { 
         setTimeout(() => { 
@@ -100,3 +112,4 @@ function checkWin() {
     }
     return score; 
 }
+

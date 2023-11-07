@@ -71,6 +71,54 @@ body{
     border-radius: 5px;
     border: 2px solid gray;
 }
+/*Achievement Tab*/
+#achievements{
+  width: 300px;
+  height: 500px;
+  background-color:rgba(0, 0, 0, 0.575);
+  border: 5px solid rgba(216, 209, 165, 0.854);
+}
+h3{
+    color: white;
+    text-align: center;
+}
+/*Achievement Styles*/
+#achievement0 {
+ width: 250px;
+ height: 50px;
+ background-color: rgba(51, 102, 243, 0.5);
+ color: white;
+ border: 5px solid rgb(0, 195, 255);
+ font-size:  x-large;
+ text-align: center;
+ padding-top: 25px;
+ border-radius: 5px;
+ display: none;
+}
+#achievement1 {
+ width: 250px;
+ height: 50px;
+ background-color: rgba(218, 165, 32, 0.5);
+ color: white;
+ border: 5px solid gold;
+ font-size:  x-large;
+ text-align: center;
+ padding-top: 25px;
+ border-radius: 5px;
+ display: none;
+}
+#achievement2 {
+ width: 250px;
+ height: 50px;
+ background-color: rgba(15, 156, 10, 0.5);
+ color: white;
+ font-size: x-large;
+ text-align: center;
+ padding-top: 25px;
+ border-radius: 5px;
+ border: 5px solid greenyellow;
+ display: none;
+}
 
 
 @media (max-width: 500px) and (min-width: 200px){
@@ -92,6 +140,12 @@ body{
     color: white;
     border: 5px solid white;
     border-radius: 5px;
+ }
+ #achievements{
+    display: flex;
+    grid-row-start: 4;
+    grid-row-end: 6;
+    flex-wrap: wrap;
  }
 }
 
@@ -121,6 +175,14 @@ body{
     color: white;
     border: 5px solid white;
     border-radius: 5px;
+ }
+ #achievements{
+    display: flex;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    grid-column-start: 2;
+    grid-column-end:4;
+    flex-wrap: wrap;
  }
 }
 
