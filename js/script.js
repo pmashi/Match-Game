@@ -6,7 +6,7 @@ var checkTwo = -1;
 var win = false; 
 function createGrid() { 
     grid = new Array(16);
-    gridVis = new Array(16)
+    gridVis = new Array(16);
     for(let i = 0; i < grid.length; i++) { 
         grid[i] = i%8;
         gridVis[i] = false; 
@@ -15,12 +15,10 @@ function createGrid() {
         const j = Math.floor(Math.random() * (grid.length - i) + i);
         [grid[i], grid[j]] = [grid[j], grid[i]];
     }
-    // gridLog();
+    gridLog();
 }
 function gridLog() { // debugging function
-    for(let i = 0; i < grid.length; i++) { 
-        console.log(grid[i] + " " + gridVis[i]);
-    }
+    for(let i = 0; i < grid.length; i++) console.log(grid[i] + " " + gridVis[i]);
 }
 function reset() { 
     createGrid(); 
@@ -53,7 +51,6 @@ function initialize() {
 function render() { 
     document.getElementById("score").innerHTML = "Score: " + score; 
     displayAchievements();
-    
     winDisplay = win ? "block" : "none"; 
     document.getElementById("win").style.display = winDisplay; 
 }
@@ -61,7 +58,6 @@ function handleClick(cell) {
     id = cell.id;
     if(gridVis[id] == true || (checkOne != -1 && checkTwo != -1)) return; 
     console.log("click!" + grid[id] + " " + gridVis[id])
-    console.log("pass")
     if(checkOne == -1) {
         cell.setAttribute("src", "img/"+img[grid[id]]);
         checkOne = id; 
@@ -73,24 +69,16 @@ function handleClick(cell) {
             checkTwo = id; 
             gridVis[id] = true;
             //Solid Gold Achievement
-            if(activeAchievement[1])
-            {
-                score += 0.5;
-            }
-            else {
-                score++;
-            }
-            
+            if(activeAchievement[1]) score += 0.5;
+            else score++;
         }
     }
     render();
-    if(checkOne != -1 && checkTwo != -1) { 
-        check(); 
-    }
+    if(checkOne != -1 && checkTwo != -1) check(); 
 }
 function check() { 
+    checkForAchievements();
     if(grid[checkOne] == grid[checkTwo]) {
-        checkForAchievements();    
         checkOne = -1, checkTwo =-1; 
         checkWin(); 
         return;
@@ -104,10 +92,7 @@ function check() {
     }
 }
 function checkWin() { 
-    if(score == 2) return score; 
-    for(vis of gridVis) { 
-        if(!vis) return;
-    }
+    for(vis of gridVis) if(!vis) return;
     win = true; 
     render(); 
     return score; 
